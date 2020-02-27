@@ -7,6 +7,8 @@ import io.sjh.jcartadministrationback.dto.out.AdministratorShowOutDTO;
 import io.sjh.jcartadministrationback.dto.out.PageOutDTO;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/administrator")
 public class AdministratorController {
@@ -56,6 +58,16 @@ public class AdministratorController {
      }
      @PostMapping("/update")
     public void update(@RequestBody AdministratorUpdateInDTO administratorUpdateInDTO){
+
+     }
+
+     @PostMapping("/delete")
+     public void delete(@RequestParam Integer adminstratorId){
+
+     }
+
+     @PostMapping("/batchDelete")
+    public void batchDelete(@RequestParam List<Integer> adminstratorIds){
 
      }
 }
