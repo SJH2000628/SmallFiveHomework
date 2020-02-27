@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 public class AdministratorController {
     @GetMapping("/login")
     public String login(AdministratorLoginInDTO administratorLoginInDTO){
+
         return null;
     }
 
 
 
     @GetMapping("/getProfile")
-    public AdministratorGetProfileOutDTO getProfile(Integer adminstratorId){
+    public AdministratorGetProfileOutDTO getProfile(@RequestParam(required = false) Integer adminstratorId){
 
         return null;
     }
@@ -24,5 +25,5 @@ public class AdministratorController {
     @PostMapping("/updateProdfile")
     public void updateProdfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO){
 
-    }
+     }
 }
