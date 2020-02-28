@@ -76,4 +76,18 @@ public class ProductServiceImpl implements ProductService {
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
+
+    @Override
+    @Transactional
+    public void delete(Integer productId) {
+        productMapper.deleteByPrimaryKey(productId);
+        productDetailMapper.deleteByPrimaryKey(productId);
+    }
+
+    @Override
+    @Transactional
+    public void batchDelete(List<Integer> productIds) {
+        productMapper.batchDelete(productIds);
+        productDetailMapper.batchDelete(productIds);
+    }
 }
