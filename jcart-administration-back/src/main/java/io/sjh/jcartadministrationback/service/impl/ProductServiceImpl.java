@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import io.sjh.jcartadministrationback.dao.ProductDetailMapper;
 import io.sjh.jcartadministrationback.dao.ProductMapper;
 import io.sjh.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.sjh.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.sjh.jcartadministrationback.po.Product;
 import io.sjh.jcartadministrationback.po.ProductDetail;
 import io.sjh.jcartadministrationback.service.ProductService;
@@ -48,5 +49,31 @@ public class ProductServiceImpl implements ProductService {
         productDetailMapper.insertSelective(productDetail);
 
         return productId;
+    }
+
+    @Override
+    @Transactional
+    public void update(ProductUpdateInDTO productUpdateInDTO) {
+        Product product = new Product();
+        product.setProductId(productUpdateInDTO.getProudctId());
+        product.setProductName(productUpdateInDTO.getProductName());
+        product.setPrice(productUpdateInDTO.getPrice());
+        product.setDiscount(productUpdateInDTO.getDiscount());
+        product.setStockQuantity(productUpdateInDTO.getStockQuantity());
+        product.setStatus(productUpdateInDTO.getStatus());
+        product.setMainPicUrl(productUpdateInDTO.getMainPicUrl());
+        product.setRewordPoints(productUpdateInDTO.getRewordPoints());
+        product.setSortOrder(productUpdateInDTO.getSortOrder());
+        String description = productUpdateInDTO.getDescription();
+        String productAbstract = description.substring(0, Math.min(100, description.length()));
+        product.setProductAbstract(productAbstract);
+        productMapper.updateByPrimaryKeySelective(product);
+
+        ProductDetail productDetail = new ProductDetail();
+        productDetail.setProductId(productUpdateInDTO.getProudctId());
+        productDetail.setDescription(productUpdateInDTO.getDescription());
+        List<String> otherPicUrls=productUpdateInDTO.getOtherpicUrls();
+        productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
+        productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
 }
