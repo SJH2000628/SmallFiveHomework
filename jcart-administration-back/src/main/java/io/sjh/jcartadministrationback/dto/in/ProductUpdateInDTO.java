@@ -3,7 +3,7 @@ package io.sjh.jcartadministrationback.dto.in;
 import java.util.List;
 
 public class ProductUpdateInDTO {
-    private Integer proudctId;
+    private Integer productId;
     private String productName;
     private Double price;
     private Double discount;
@@ -15,12 +15,12 @@ public class ProductUpdateInDTO {
     private String description;
     private List<String> otherpicUrls;
 
-    public Integer getProudctId() {
-        return proudctId;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProudctId(Integer proudctId) {
-        this.proudctId = proudctId;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {

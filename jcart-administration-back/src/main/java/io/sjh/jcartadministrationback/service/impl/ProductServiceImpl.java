@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void update(ProductUpdateInDTO productUpdateInDTO) {
         Product product = new Product();
-        product.setProductId(productUpdateInDTO.getProudctId());
+        product.setProductId(productUpdateInDTO.getProductId());
         product.setProductName(productUpdateInDTO.getProductName());
         product.setPrice(productUpdateInDTO.getPrice());
         product.setDiscount(productUpdateInDTO.getDiscount());
@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
         productMapper.updateByPrimaryKeySelective(product);
 
         ProductDetail productDetail = new ProductDetail();
-        productDetail.setProductId(productUpdateInDTO.getProudctId());
+        productDetail.setProductId(productUpdateInDTO.getProductId());
         productDetail.setDescription(productUpdateInDTO.getDescription());
         List<String> otherPicUrls=productUpdateInDTO.getOtherpicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
