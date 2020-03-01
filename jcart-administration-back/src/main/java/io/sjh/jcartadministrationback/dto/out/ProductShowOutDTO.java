@@ -12,9 +12,18 @@ public class ProductShowOutDTO {
     private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
+    private String productAbstract;
     private Integer sortOrder;
     private String description;
     private List<String> otherpicUrls;
+
+    public String getProductAbstract() {
+        return productAbstract;
+    }
+
+    public void setProductAbstract(String productAbstract) {
+        this.productAbstract = productAbstract;
+    }
 
     public Integer getProductId() {
         return productId;

@@ -1,15 +1,17 @@
 package io.sjh.jcartstoreback.controller;
 
-import io.cjf.jcartstoreback.dto.in.ProductSearchInDTO;
-import io.cjf.jcartstoreback.dto.out.PageOutDTO;
-import io.cjf.jcartstoreback.dto.out.ProductListOutDTO;
-import io.cjf.jcartstoreback.dto.out.ProductShowOutDTO;
-import io.cjf.jcartstoreback.service.ProductService;
+import com.github.pagehelper.Page;
+import io.sjh.jcartstoreback.dto.in.ProductSearchInDTO;
+import io.sjh.jcartstoreback.dto.out.PageOutDTO;
+import io.sjh.jcartstoreback.dto.out.ProductListOutDTO;
+import io.sjh.jcartstoreback.dto.out.ProductShowOutDTO;
+import io.sjh.jcartstoreback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
@@ -17,8 +19,14 @@ public class ProductController {
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
-                                                @RequestParam Integer pageNum){
-        return null;
+                                                @RequestParam(required = false,defaultValue = "1") Integer pageNum){
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(page);
+        return pageOutDTO;
     }
 
     @GetMapping("/getById")

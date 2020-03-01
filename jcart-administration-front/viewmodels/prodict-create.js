@@ -14,6 +14,7 @@ var app = new Vue({
         selectedOtherPics:[],
         otherpicUrls:[],
         selectedStatus:1,
+        productAbstract:'',
         statuses: [
             {value: 0,label: '下架'},
             {value: 1,label: '上架'},
@@ -103,7 +104,8 @@ var app = new Vue({
                 rewordPoints: this.rewordPoints,
                 sortOrder: this.sortOrder,
                 description: this.description,
-                otherpicUrls:this.otherpicUrls
+                otherpicUrls:this.otherpicUrls,
+                productAbstract:this.productAbstract
             })
                 .then(function (response) {
                     console.log(response);
