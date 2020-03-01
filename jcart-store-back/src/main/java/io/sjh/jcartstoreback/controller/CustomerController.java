@@ -10,8 +10,8 @@ import io.sjh.jcartstoreback.po.Customer;
 import io.sjh.jcartstoreback.service.CustomerService;
 import io.sjh.jcartstoreback.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
