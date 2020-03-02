@@ -97,6 +97,7 @@ public class AdministratorController {
              administratorListOutDTO.setUsername(administrator.getUsername());
              administratorListOutDTO.setStatus(administrator.getStatus());
              administratorListOutDTO.setCreateTimestamp(administrator.getCreateTime().getTime());
+             administratorListOutDTO.setRealName(administrator.getRealName());
              return administratorListOutDTO;
          }).collect(Collectors.toList());
          PageOutDTO<AdministratorListOutDTO> pageOutDTO = new PageOutDTO<>();
