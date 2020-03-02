@@ -3,17 +3,17 @@ package io.sjh.jcartadministrationback.dto.out;
 public class AdministratorShowOutDTO {
     private Integer administratorId;
     private String username;
-    private String realNume;
+    private String realName;
     private String email;
     private String avatarUrl;
     private Byte status;
 
-    public String getRealNume() {
-        return realNume;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setRealNume(String realNume) {
-        this.realNume = realNume;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
     public Integer getAdministratorId() {

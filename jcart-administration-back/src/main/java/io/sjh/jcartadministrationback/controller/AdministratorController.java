@@ -113,7 +113,7 @@ public class AdministratorController {
          AdministratorShowOutDTO administratorShowOutDTO = new AdministratorShowOutDTO();
          administratorShowOutDTO.setAdministratorId(administrator.getAdministratorId());
          administratorShowOutDTO.setUsername(administrator.getUsername());
-         administratorShowOutDTO.setRealNume(administrator.getRealName());
+         administratorShowOutDTO.setRealName(administrator.getRealName());
          administratorShowOutDTO.setEmail(administrator.getEmail());
          administratorShowOutDTO.setAvatarUrl(administrator.getAvatarUrl());
          administratorShowOutDTO.setStatus(administrator.getStatus());

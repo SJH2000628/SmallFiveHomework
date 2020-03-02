@@ -15,9 +15,9 @@ var app = new Vue({
     methods: {
         handleCreateClick() {
             console.log('create click');
-            this.createProduct();
+            this.createAdministrator();
         },
-        createProduct() {
+        createAdministrator() {
             axios.post('/administrator/create', {
                 username:this.username,
                 password:this.password,
