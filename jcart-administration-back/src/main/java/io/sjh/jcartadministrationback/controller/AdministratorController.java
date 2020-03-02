@@ -1,21 +1,43 @@
 package io.sjh.jcartadministrationback.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import io.sjh.jcartadministrationback.constant.ClientExceptionConstant;
 import io.sjh.jcartadministrationback.dto.in.*;
-import io.sjh.jcartadministrationback.dto.out.AdministratorGetProfileOutDTO;
-import io.sjh.jcartadministrationback.dto.out.AdministratorListOutDTO;
-import io.sjh.jcartadministrationback.dto.out.AdministratorShowOutDTO;
-import io.sjh.jcartadministrationback.dto.out.PageOutDTO;
+import io.sjh.jcartadministrationback.dto.out.*;
+import io.sjh.jcartadministrationback.exception.ClientException;
+import io.sjh.jcartadministrationback.po.Administrator;
+import io.sjh.jcartadministrationback.service.AdministratorService;
+import io.sjh.jcartadministrationback.util.JWTUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/administrator")
+@CrossOrigin
 public class AdministratorController {
-    @GetMapping("/login")
-    public String login(AdministratorLoginInDTO administratorLoginInDTO){
+    @Autowired
+    private AdministratorService administratorService;
 
-        return null;
+    @Autowired
+    private JWTUtil jwtUtil;
+
+    @GetMapping("/login")
+    public AdministratorLoginOutDTO login(AdministratorLoginInDTO administratorLoginInDTO) throws ClientException {
+        Administrator administrator = administratorService.getByUsername(administratorLoginInDTO.getUsername());
+        if (administrator == null){
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCOOE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
+        }
+        String encPwdDB = administrator.getEncryptedPassword();
+        BCrypt.Result result = BCrypt.verifyer().verify(administratorLoginInDTO.getPassword().toCharArray(), encPwdDB);
+
+        if (result.verified) {
+            AdministratorLoginOutDTO customerLoginOutDTO = jwtUtil.issueToken(administrator);
+            return customerLoginOutDTO;
+        }else {
+            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_PASSWORD_INVALID_ERRCOOE, ClientExceptionConstant.ADMINISTRATOR_PASSWORD_INVALID_ERRMSG);
+        }
     }
 
 
