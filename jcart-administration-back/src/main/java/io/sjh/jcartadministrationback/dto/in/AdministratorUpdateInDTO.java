@@ -3,9 +3,18 @@ package io.sjh.jcartadministrationback.dto.in;
 public class AdministratorUpdateInDTO {
     private Integer administratorId;
     private String realName;
+    private String avatarUrl;
     private String password;
     private String email;
     private Byte status;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     public Integer getAdministratorId() {
         return administratorId;
