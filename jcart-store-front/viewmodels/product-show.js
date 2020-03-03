@@ -44,6 +44,8 @@ var app = new Vue({
                 unitPrice: this.price,
                 quantity: this.quantity,
             };
+            var myShoppingCartJson = localStorage['myShoppingCartJson'];
+            this.myShoppingCart = myShoppingCartJson ? JSON.parse(myShoppingCartJson) : [];
             this.myShoppingCart.push(newProduct);
             localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
             this.$message.success('添加购物车成功');
