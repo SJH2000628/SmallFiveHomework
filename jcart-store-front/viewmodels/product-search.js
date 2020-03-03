@@ -1,19 +1,14 @@
 var app = new Vue({
     el: '#app',
     data: {
-        pageInfo:'',
-        pageNum:1
+        pageInfo: '',
+        pageNum: 1
     },
-    mounted() {
+    mounted(){
         console.log('view mounted');
         this.searchProduct();
     },
     methods: {
-        handlePageChange(val) {
-            console.log('page change');
-            this.pageNum = val;
-            this.searchProduct();
-        },
         searchProduct() {
             axios.get('/product/search', {
                 params: {
@@ -26,8 +21,13 @@ var app = new Vue({
                 })
                 .catch(function (error) {
                     console.log(error);
-                })
+                });
+        },
+        handlePageChange(val){
+            console.log('page change', val);
+            this.pageNum = val;
+            this.searchProduct();
         }
+
     }
-    
 })

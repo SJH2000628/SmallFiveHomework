@@ -11,12 +11,12 @@ var app = new Vue({
         mainPicUrl: '',
         otherPicUrls: []
     },
-    computed: {
-        otherPicUrlsJson() {
+    computed:{
+        otherPicUrlsJson(){
             return this.otherPicUrls.toString();
         }
     },
-    mounted() {
+    mounted(){
         console.log('view mounted');
 
         var url = new URL(location.href);
