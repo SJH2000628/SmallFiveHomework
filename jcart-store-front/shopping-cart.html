@@ -11,6 +11,20 @@
 
 <body>
     <div id="app">
+        <el-table :data="myProducts" style="width: 100%">
+            <el-table-column prop="mainPicUrl" label="主图">
+            </el-table-column>
+            <el-table-column prop="productCode" label="商品代号">
+            </el-table-column>
+            <el-table-column prop="productName" label="商品名称">
+            </el-table-column>
+            <el-table-column prop="unitPrice" label="单价">
+            </el-table-column>
+            <el-table-column prop="quantity" label="数量">
+            </el-table-column>
+            <el-table-column prop="totalPrice" label="总计">
+            </el-table-column>
+        </el-table>
     </div>
 
     <script src="assets/js/axios.min.js"></script>
