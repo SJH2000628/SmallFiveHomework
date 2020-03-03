@@ -52,9 +52,9 @@ var app = new Vue({
                     productName: this.productName,
                     mainPicUrl: this.mainPicUrl,
                     unitPrice: this.price,
-                    quantity: this.quantity,
+                    quantity: this.quantity
                 };
-                this.myShoppingCartJson.push(cartProduct);
+                this.myShoppingCart.push(cartProduct);
             }
             
             localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
