@@ -6,8 +6,7 @@ var app = new Vue({
     mounted(){
         console.log('view mounted');
         var myShoppingCartJson = localStorage['myShoppingCartJson'];
-        this.myShoppingCart = JSON.parse(myShoppingCartJson);
-        console.log(myShoppingCart);
+        this.myShoppingCart =myShoppingCartJson ? JSON.parse(myShoppingCartJson) : [];
     },
     methods:{
         handleDelete(index,row){

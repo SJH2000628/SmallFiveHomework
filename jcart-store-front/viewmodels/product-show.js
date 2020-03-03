@@ -44,7 +44,6 @@ var app = new Vue({
                 unitPrice: this.price,
                 quantity: this.quantity,
             };
-            newProduct.totalPrice=this.price * this.quantity;
             this.myShoppingCart.push(newProduct);
             localStorage['myShoppingCartJson'] = JSON.stringify(this.myShoppingCart);
             this.$message.success('添加购物车成功');
