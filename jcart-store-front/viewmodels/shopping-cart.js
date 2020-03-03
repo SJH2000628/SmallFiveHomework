@@ -1,12 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
-        myProducts:[]
+        myShoppingCart:[]
     },
     mounted(){
         console.log('view mounted');
-        var myShoppingCart = localStorage['myShoppingCart'];
-        this.myProducts = JSON.parse(myShoppingCart);
+        var myShoppingCartJson = localStorage['myShoppingCartJson'];
+        this.myShoppingCart = JSON.parse(myShoppingCartJson);
         console.log(myShoppingCart);
     }
 })
