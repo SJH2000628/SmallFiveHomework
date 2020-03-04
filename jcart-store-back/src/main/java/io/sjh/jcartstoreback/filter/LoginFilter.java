@@ -67,7 +67,6 @@ public class LoginFilter implements Filter {
         }catch (JWTVerificationException ex){
             throw new ClientException(ClientExceptionConstant.TOKEN_INVALID_ERRCODE, ex.getMessage());
         }
-
         request.setAttribute("customerId", administratorLoginVO.getCustomerId());
         request.setAttribute("customerUsername", administratorLoginVO.getUsername());
 
