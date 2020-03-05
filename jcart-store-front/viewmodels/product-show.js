@@ -34,7 +34,7 @@ var app = new Vue({
         this.getProductById();
     },
     methods: {
-        handleAddToCartClick(){
+        handleAddToCartClick(){ 
             console.log('add to cart click');
            
             var myShoppingCartJson = localStorage['myShoppingCartJson'];

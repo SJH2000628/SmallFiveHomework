@@ -5,10 +5,6 @@ import io.sjh.jcartstoreback.constant.ClientExceptionConstant;
 import io.sjh.jcartstoreback.exception.ClientException;
 import io.sjh.jcartstoreback.util.JWTUtil;
 import io.sjh.jcartstoreback.vo.CustomerLoginVO;
-import io.sjh.jcartstoreback.constant.ClientExceptionConstant;
-import io.sjh.jcartstoreback.exception.ClientException;
-import io.sjh.jcartstoreback.util.JWTUtil;
-import io.sjh.jcartstoreback.vo.CustomerLoginVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +63,7 @@ public class LoginFilter implements Filter {
         }catch (JWTVerificationException ex){
             throw new ClientException(ClientExceptionConstant.TOKEN_INVALID_ERRCODE, ex.getMessage());
         }
+
         request.setAttribute("customerId", administratorLoginVO.getCustomerId());
         request.setAttribute("customerUsername", administratorLoginVO.getUsername());
 
