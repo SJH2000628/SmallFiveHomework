@@ -1,20 +1,41 @@
 package io.sjh.jcartadministrationback.dto.out;
 
+import java.util.Date;
+
 public class OrderListOutDTO {
-    private Long oderId;
+    private Long orderId;
     private Integer customerId;
     private String customerName;
     private Byte status;
     private Double totalPrice;
     private Long createTimestamp;
     private Long updateTimestamp;
+    private Date createTime;
+    private Date updateTime;
 
-    public Long getOderId() {
-        return oderId;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setOderId(Long oderId) {
-        this.oderId = oderId;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getCustomerId() {

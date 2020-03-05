@@ -2,11 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.sjh.jcartadministrationback.dao.OrderMapper">
   <resultMap id="BaseResultMap" type="io.sjh.jcartadministrationback.po.Order">
+  <id column="order_id" jdbcType="BIGINT" property="orderId" />
+  <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+  <result column="status" jdbcType="TINYINT" property="status" />
+  <result column="total_price" jdbcType="DOUBLE" property="totalPrice" />
+  <result column="reword_points" jdbcType="INTEGER" property="rewordPoints" />
+  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+</resultMap>
+  <resultMap id="OrderListOutDTO" type="io.sjh.jcartadministrationback.dto.out.OrderListOutDTO">
     <id column="order_id" jdbcType="BIGINT" property="orderId" />
     <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="real_name" jdbcType="VARCHAR" property="customerName" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="total_price" jdbcType="DOUBLE" property="totalPrice" />
-    <result column="reword_points" jdbcType="INTEGER" property="rewordPoints" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
@@ -114,4 +123,13 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
+<!--  custom-->
+  <select id="search" resultMap="OrderListOutDTO">
+    SELECT o.*,c.real_name FROM jcart_order as o
+    LEFT JOIN jcart_customer as c
+    ON o.customer_id = c.customer_id
+    ORDER BY create_time DESC
+  </select>
+
+
 </mapper>
