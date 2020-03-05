@@ -1,5 +1,7 @@
 package io.sjh.jcartadministrationback.dto.out;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public class OrderListOutDTO {
@@ -10,7 +12,9 @@ public class OrderListOutDTO {
     private Double totalPrice;
     private Long createTimestamp;
     private Long updateTimestamp;
+    @JsonIgnore
     private Date createTime;
+    @JsonIgnore
     private Date updateTime;
 
     public Date getCreateTime() {
@@ -71,18 +75,11 @@ public class OrderListOutDTO {
     }
 
     public Long getCreateTimestamp() {
-        return createTimestamp;
-    }
-
-    public void setCreateTimestamp(Long createTimestamp) {
-        this.createTimestamp = createTimestamp;
+        return this.createTime == null ? null : this.createTime.getTime();
     }
 
     public Long getUpdateTimestamp() {
-        return updateTimestamp;
+        return this.updateTime == null ? null : this.updateTime.getTime();
     }
 
-    public void setUpdateTimestamp(Long updateTimestamp) {
-        this.updateTimestamp = updateTimestamp;
-    }
 }
