@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/address")
@@ -16,8 +17,18 @@ public class AddressController {
     private AddrsessService addrsessService;
     @GetMapping("/getListCustomerId")
     public List<AddressListOutDTO> getListCustomerId(@RequestParam Integer customerId){
+        List<Address> addresses = addrsessService.selectByCustomerId(customerId);
+        List<AddressListOutDTO> addressListOutDTOS = addresses.stream().map(address -> {
+            AddressListOutDTO addressListOutDTO = new AddressListOutDTO();
+            addressListOutDTO.setAddressId(address.getAddressId());
+            addressListOutDTO.setReceiverName(address.getReceiverName());
+            addressListOutDTO.setReceiverMobile(address.getReceiverMobile());
+            addressListOutDTO.setContent(address.getContent());
+            addressListOutDTO.setTag(address.getTag());
+            return addressListOutDTO;
 
-        return null;
+        }).collect(Collectors.toList());
+        return addressListOutDTOS;
     }
 
     @GetMapping("/getById")
