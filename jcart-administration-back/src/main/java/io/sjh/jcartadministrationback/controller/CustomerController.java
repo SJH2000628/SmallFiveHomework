@@ -11,6 +11,7 @@ import io.sjh.jcartadministrationback.po.Customer;
 import io.sjh.jcartadministrationback.service.AddrsessService;
 import io.sjh.jcartadministrationback.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/customer")
+@CrossOrigin
 public class CustomerController {
 
     @Autowired
