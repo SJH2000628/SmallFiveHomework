@@ -29,7 +29,8 @@ public class OderController {
 
     @GetMapping("/getById")
     public OrderShowOutDTO getById(@RequestParam Long orderId) {
-        return null;
+        OrderShowOutDTO orderShowOutDTO = oderService.getById(orderId);
+        return orderShowOutDTO;
     }
 
     @GetMapping("/getInvoiceInfo")
