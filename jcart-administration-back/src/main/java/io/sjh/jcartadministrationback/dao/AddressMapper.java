@@ -1,7 +1,9 @@
 package io.sjh.jcartadministrationback.dao;
 
 import io.sjh.jcartadministrationback.po.Address;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AddressMapper {
     int deleteByPrimaryKey(Integer addressId);
 
