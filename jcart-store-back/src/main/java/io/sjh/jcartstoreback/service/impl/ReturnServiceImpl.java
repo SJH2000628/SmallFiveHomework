@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class ReturnServiceImpl implements ReturnService {
     @Autowired
     private ReturnMapper returnMapper;
+
     @Override
     public Integer create(Return aReturn) {
         returnMapper.insertSelective(aReturn);
@@ -25,5 +26,11 @@ public class ReturnServiceImpl implements ReturnService {
         PageHelper.startPage(pageNum,10);
         Page<Return> page = returnMapper.selectPageByCustomerId(customerId);
         return page;
+    }
+
+    @Override
+    public Return getById(Integer returnId) {
+        Return aReturn = returnMapper.selectByPrimaryKey(returnId);
+        return aReturn;
     }
 }
