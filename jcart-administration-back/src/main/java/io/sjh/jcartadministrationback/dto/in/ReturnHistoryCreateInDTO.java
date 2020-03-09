@@ -3,8 +3,16 @@ package io.sjh.jcartadministrationback.dto.in;
 public class ReturnHistoryCreateInDTO {
     private Integer returnId;
     private Byte returnStatus;
-    private Boolean customerNotifeid;
+    private Boolean customerNotified;
     private String comment;
+
+    public Boolean getCustomerNotified() {
+        return customerNotified;
+    }
+
+    public void setCustomerNotified(Boolean customerNotified) {
+        this.customerNotified = customerNotified;
+    }
 
     public Integer getReturnId() {
         return returnId;
@@ -22,13 +30,6 @@ public class ReturnHistoryCreateInDTO {
         this.returnStatus = returnStatus;
     }
 
-    public Boolean getCustomerNotifeid() {
-        return customerNotifeid;
-    }
-
-    public void setCustomerNotifeid(Boolean customerNotifeid) {
-        this.customerNotifeid = customerNotifeid;
-    }
 
     public String getComment() {
         return comment;
@@ -37,4 +38,5 @@ public class ReturnHistoryCreateInDTO {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
 }
