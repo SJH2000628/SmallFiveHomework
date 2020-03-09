@@ -18,4 +18,14 @@ public class ReturnServiceIml implements ReturnService {
         Page<Return> page = returnMapper.search();
         return page;
     }
+    @Override
+    public Return getById(Integer returnId) {
+        Return aReturn = returnMapper.selectByPrimaryKey(returnId);
+        return aReturn;
+    }
+
+    @Override
+    public void update(Return aReturn) {
+        returnMapper.updateByPrimaryKeySelective(aReturn);
+    }
 }

@@ -2,7 +2,7 @@ package io.sjh.jcartadministrationback.dto.out;
 
 public class ReturnShowOutDTO {
     private Integer returnId;
-    private Long order;
+    private Long orderId;
     private Long orderTimestamp;
     private Integer customerId;
     private String customerName;
@@ -27,13 +27,6 @@ public class ReturnShowOutDTO {
         this.returnId = returnId;
     }
 
-    public Long getOrder() {
-        return order;
-    }
-
-    public void setOrder(Long order) {
-        this.order = order;
-    }
 
     public Long getOrderTimestamp() {
         return orderTimestamp;
@@ -153,5 +146,13 @@ public class ReturnShowOutDTO {
 
     public void setUpdateTimestamp(Long updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }
