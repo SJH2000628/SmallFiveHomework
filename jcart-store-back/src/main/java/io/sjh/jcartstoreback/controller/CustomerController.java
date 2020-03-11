@@ -104,7 +104,6 @@ public class CustomerController {
 
     @GetMapping("/getPwdResetCode")
     public void getPwdResetCode(@RequestParam String email) throws ClientException {
-
         Customer customer = customerService.getByEmail(email);
         if (customer == null){
             throw new ClientException(ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRMSG);
@@ -117,7 +116,7 @@ public class CustomerController {
         message.setSubject("jcart重置密码");
         message.setText(hex);
         mailSender.send(message);
-        emailPwdResetCodeMap.put("PwdResetCode"+email, hex);
+        emailPwdResetCodeMap.put(email, hex);
     }
     @PostMapping("/resetPwd")
     public void resetPwd(@RequestBody CustomerResetPwdInDTO customerResetPwdInDTO) throws ClientException {
