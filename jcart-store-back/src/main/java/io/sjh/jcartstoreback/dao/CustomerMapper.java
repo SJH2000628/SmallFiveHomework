@@ -1,5 +1,6 @@
 package io.sjh.jcartstoreback.dao;
 
+import io.sjh.jcartstoreback.po.Administrator;
 import io.sjh.jcartstoreback.po.Customer;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,5 @@ public interface CustomerMapper {
     //    custom
 
     Customer selectByUsername(@Param("username") String username);
-
     Customer selectByEmail(@Param("email") String email);
 }

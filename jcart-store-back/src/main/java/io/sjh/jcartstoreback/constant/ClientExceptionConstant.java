@@ -14,5 +14,23 @@ public class ClientExceptionConstant {
     public static final String CUSTOMER_PASSWORD_INVALID_ERRCODE = "0102";
     public static final String CUSTOMER_PASSWORD_INVALID_ERRMSG = "customer password invalid";
 
+    public static final String ADMINISTRATOR_PWDRESET_EMAIL_NONE_ERRCOOE = "0103";
+    public static final String ADMINISTRATOR_PWDRESET_EMAIL_NONE_ERRMSG = "administrator password reset email none";
+
+    public static final String ADMINISTRATOR_PWDRESET_INNER_RESETCOOE_NONE_ERRCOOE = "0104";
+    public static final String ADMINISTRATOR_PWDRESET_INNER_RESETCOOE_NONE_ERRMSG = "administrator password inner reset code none";
+
+    public static final String ADMINISTRATOR_PWDRESET_OUTER_RESETCOOE_NONE_ERRCOOE = "0105";
+    public static final String ADMINISTRATOR_PWDRESET_OUTER_RESETCOOE_NONE_ERRMSG = "administrator password outer reset code email none";
+
+    public static final String ADMINISTRATOR_PWDRESET_RESETCOOE_INVALID_ERRCOOE = "0106";
+    public static final String ADMINISTRATOR_PWDRESET_RESETCOOE_INVALID_ERRMSG = "administrator password reset code invalid";
+
+    public static final String ADMINISTRATOR_EMAIL_NOT_EXIST_ERRCOOE = "0107";
+    public static final String ADMINISTRATOR_EMAIL_NOT_EXIST_ERRMSG = "administrator email not exist";
+
+    public static final String ADMINISTRATOR_NEWPWD_NOT_EXIST_ERRCODE = "0108";
+    public static final String ADMINISTRATOR_NEWPWD_NOT_EXIST_ERRMSG = "administrator new password not exist";
+
 
 }
