@@ -194,6 +194,9 @@
       <if test="price!=null">
         and price = #{price}
       </if>
+      <if test="productName != null">
+          and product_name like concat('%',#{productName},'%')
+      </if>
     </where>
   </select>
 
