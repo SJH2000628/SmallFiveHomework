@@ -2,6 +2,7 @@ package io.sjh.jcartadministrationback.dao;
 
 import com.github.pagehelper.Page;
 import io.sjh.jcartadministrationback.po.Customer;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,5 +21,9 @@ public interface CustomerMapper {
 
 //    custom
 
-    Page<Customer> search();
+    Page<Customer> search(@Param("username")String username,
+                          @Param("realName")String realName,
+                          @Param("mobile")String mobile,
+                          @Param("email")String email,
+                          @Param("status")Byte status);
 }
