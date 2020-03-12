@@ -3,6 +3,16 @@ var app = new Vue({
     data: {
         pageInfo:'',
         pageNum:1,
+        username: '',
+        realName: '',
+        mobile: '',
+        email: '',
+        selectedStatus: '',
+        statusess: [
+            { value: 0, label: '禁用' },
+            { value: 1, label: '启用' },
+            { value: 2, label: '不安全' }
+        ],
         statuses:[
             { value: 0, label: '禁用' },
             { value: 1, label: '启用' },
@@ -14,6 +24,19 @@ var app = new Vue({
         this.searchCustomer();
     },
     methods:{
+        handleFuzzyClick() {
+            console.log('fuzzy click')
+            this.pageNum = 1;
+            this.searchCustomer();
+        },
+        handleClearClick() {
+            console.log('clear click')
+            this.username = '';
+            this.realName = '';
+            this.mobile = '';
+            this.email = '';
+            this.selectedStatus = '';
+        },
         handlePageChange(){
           console.log('page change');
           this.pageNum = val;
@@ -26,6 +49,11 @@ var app = new Vue({
         searchCustomer(){
             axios.get('/customer/search', {
                 params: {
+                    username: this.username,
+                    realName: this.realName,
+                    mobile: this.mobile,
+                    email: this.email,
+                    status: this.selectedStatus,
                     pageNum: this.pageNum
                 }
             })
