@@ -19,10 +19,11 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
-                                                @RequestParam(required = false, defaultValue = "1") Integer pageName){
-        Page<ProductListOutDTO> page = productService.search(pageName);
+                                                @RequestParam(required = false, defaultValue = "1") Integer pageName) {
+        Page<ProductListOutDTO> page = productService.search(productSearchInDTO, pageName);
         PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
         pageOutDTO.setPageSize(page.getPageSize());
@@ -30,28 +31,33 @@ public class ProductController {
         pageOutDTO.setList(page);
         return pageOutDTO;
     }
+
     @GetMapping("/getById")
-    public ProductShowOutDTO getById(@RequestParam Integer productId){
+    public ProductShowOutDTO getById(@RequestParam Integer productId) {
         ProductShowOutDTO productShowOutDTO = productService.getById(productId);
         return productShowOutDTO;
     }
+
     @PostMapping("/create")
-    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO){
+    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO) {
         Integer productId = productService.create(productCreateInDTO);
         return productId;
     }
+
     @PostMapping("/update")
-    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
+    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO) {
 
         productService.update(productUpdateInDTO);
     }
+
     @PostMapping("/delete")
-    public void delete(@RequestBody Integer productId){
+    public void delete(@RequestBody Integer productId) {
 
         productService.delete(productId);
     }
+
     @PostMapping("/batchDelete")
-    public void batchDelete(@RequestBody List<Integer> productIds){
+    public void batchDelete(@RequestBody List<Integer> productIds) {
         productService.batchDelete(productIds);
     }
 }

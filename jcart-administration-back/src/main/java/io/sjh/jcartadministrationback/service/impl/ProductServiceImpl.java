@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import io.sjh.jcartadministrationback.dao.ProductDetailMapper;
 import io.sjh.jcartadministrationback.dao.ProductMapper;
 import io.sjh.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.sjh.jcartadministrationback.dto.in.ProductSearchInDTO;
 import io.sjh.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.sjh.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.sjh.jcartadministrationback.dto.out.ProductShowOutDTO;
@@ -47,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
         ProductDetail productDetail = new ProductDetail();
         productDetail.setProductId(productId);
         productDetail.setDescription(productCreateInDTO.getDescription());
-        List<String> otherPicUrls=productCreateInDTO.getOtherpicUrls();
+        List<String> otherPicUrls = productCreateInDTO.getOtherpicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.insertSelective(productDetail);
 
@@ -73,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
         ProductDetail productDetail = new ProductDetail();
         productDetail.setProductId(productUpdateInDTO.getProductId());
         productDetail.setDescription(productUpdateInDTO.getDescription());
-        List<String> otherPicUrls=productUpdateInDTO.getOtherpicUrls();
+        List<String> otherPicUrls = productUpdateInDTO.getOtherpicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
@@ -93,9 +94,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductListOutDTO> search(Integer pageNum) {
-        PageHelper.startPage(pageNum,10);
-        Page<ProductListOutDTO> page = productMapper.search();
+    public Page<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
+                                          Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
+        Page<ProductListOutDTO> page = productMapper
+                .search(productSearchInDTO.getProductCode(),
+                        productSearchInDTO.getStatus(),
+                        productSearchInDTO.getStockQuantity());
         return page;
     }
 
