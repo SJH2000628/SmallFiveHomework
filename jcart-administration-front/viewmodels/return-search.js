@@ -11,7 +11,6 @@ var app = new Vue({
         startTimestamp: '',
         endTimestamp: '',
         selectedStatus:'',
-        data:'',
         statuses:[
             { value: 0, label: '待处理' },
             { value: 1, label: '待取货' },
