@@ -16,7 +16,7 @@ public class OderController {
     @GetMapping("/search")
     public PageOutDTO<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO,
                                               @RequestParam(required = false, defaultValue = "1") Integer pageName) {
-        Page<OrderListOutDTO> page = oderService.search(pageName);
+        Page<OrderListOutDTO> page = oderService.search(orderSearchInDTO,pageName);
         PageOutDTO<OrderListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
         pageOutDTO.setPageSize(page.getPageSize());

@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import io.sjh.jcartadministrationback.dao.OrderDetailMapper;
 import io.sjh.jcartadministrationback.dao.OrderMapper;
+import io.sjh.jcartadministrationback.dto.in.OrderSearchInDTO;
 import io.sjh.jcartadministrationback.dto.out.OrderListOutDTO;
 import io.sjh.jcartadministrationback.dto.out.OrderShowOutDTO;
 import io.sjh.jcartadministrationback.po.Customer;
@@ -16,6 +17,7 @@ import io.sjh.jcartadministrationback.vo.OrderProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,10 +30,15 @@ public class OderServiceImpl implements OderService {
     private CustomerService customerService;
 
     @Override
-    public Page<OrderListOutDTO> search(Integer pageNum) {
+    public Page<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO,Integer pageNum) {
 
         PageHelper.startPage(pageNum, 10);
-        Page<OrderListOutDTO> page = orderMapper.search();
+        Page<OrderListOutDTO> page = orderMapper.search(orderSearchInDTO.getOrderId(),
+                orderSearchInDTO.getStatus(),
+                orderSearchInDTO.getStartTimestamp() == null ? null : new Date(orderSearchInDTO.getStartTimestamp()),
+                orderSearchInDTO.getEndTimestamp() == null ? null : new Date(orderSearchInDTO.getEndTimestamp()),
+                orderSearchInDTO.getTotalPrice(),
+                orderSearchInDTO.getCustomerName());
         return page;
     }
 
