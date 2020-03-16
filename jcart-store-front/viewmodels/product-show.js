@@ -34,6 +34,10 @@ var app = new Vue({
         this.getProductById();
     },
     methods: {
+        handleChange(val){
+            console.log('num click');
+            quantity = val + 1;
+        },
         handleAddToCartClick(){ 
             console.log('add to cart click');
            
