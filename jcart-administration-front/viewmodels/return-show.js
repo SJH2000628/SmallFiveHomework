@@ -30,6 +30,12 @@ var app = new Vue({
             { value: 3, label: '完成' },
             { value: 4, label: '拒绝' }
         ],
+        reasons: [
+            { value: 0, label: '发货过期' },
+            { value: 1, label: '订单错误' },
+            { value: 2, label: '收到错误商品' },
+            { value: 3, label: '质量问题' }
+        ],
         selectedAction: ''
     },
     mounted() {
