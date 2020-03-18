@@ -11,7 +11,7 @@ var app = new Vue({
         mainPicUrl: '',
         quantity:1,
         otherPicUrls: [],
-        myShoppingCart: []
+        myShoppingCart: [],
     },
     computed:{
         otherPicUrlsJson(){
