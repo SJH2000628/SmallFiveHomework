@@ -14,8 +14,17 @@
 <div id="app">
 
     <el-container>
-        <el-header class="jc-header">JCart电商后台管理系统</el-header>
-        <div class="jc-container">
+        <el-header>
+            JCart电商后台管理系统
+            <el-dropdown style="float: right;" @command="handleMyItemClick">
+                <span class="el-dropdown-link">
+                    我的<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item v-for="item in my" :key="item.route" :divided="item.divided" :command="item.route">
+                        {{item.name}}</el-dropdown-item>
+                </el-dropdown-menu>
+        </el-header>
             <el-container>
                 <el-aside width="200px">
                     <el-menu unique-opened background-color="lavender" text-color="green" active-text-color="blue" router>
@@ -33,7 +42,6 @@
                     <router-view></router-view>
                 </el-main>
             </el-container>
-        </div>
     </el-container>
    
 </div>
@@ -45,16 +53,27 @@
 <script src="assets/js/elementui.js"></script>
 <script src="assets/js/vue-router.js"></script>
 
-<script src="route-page/product-search-route-page.js"></script>
-<script src="route-page/product-update-route-page.js"></script>
-
-<script src="route-page/customer-search-route-page.js"></script>
-
-<script src="route-page/order-search-route-page.js"></script>
-
-<script src="route-page/return-search-route-page.js"></script>
-
-<script src="route-page/administrator-index-route-page.js"></script>
+    <script src="route-page/administrator-update-profile-route-page.js"></script>
+    <script src="route-page/administrator-index-route-page.js"></script>
+    <script src="route-page/administrator-create-route-page.js"></script>
+    <script src="route-page/administrator-update-route-page.js"></script>
+    
+    <script src="route-page/product-search-route-page.js"></script>
+    <script src="route-page/product-create-route-page.js"></script>
+    <script src="route-page/product-update-route-page.js"></script>
+    
+    <script src="route-page/customer-search-route-page.js"></script>
+    <script src="route-page/customer-show-route-page.js"></script>
+    <script src="route-page/address-index-route-page.js"></script>
+    <script src="route-page/address-show-route-page.js"></script>
+    
+    <script src="route-page/order-search-route-page.js"></script>
+    <script src="route-page/order-show-route-page.js"></script>
+    
+    <script src="route-page/return-search-route-page.js"></script>
+    <script src="route-page/return-edit-route-page.js"></script>
+    <script src="route-page/return-show-route-page.js"></script>
+    <script src="route-page/returnhistory-index-route-page.js"></script>
 
 <script src="route-page/router.js"></script>
 
