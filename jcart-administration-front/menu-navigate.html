@@ -19,15 +19,15 @@
             <el-container>
                 <el-aside width="200px">
                     <!-- @open="handleOpen"
-                            @close="handleClose" -->
-                    <el-menu unique-opened background-color="lavender" text-color="green" active-text-color="blue"
-                        @select="handleMenuItemSelect">
+                            @close="handleClose" 
+                         @select="handleMenuItemSelect"-->
+                    <el-menu unique-opened background-color="lavender" text-color="green" active-text-color="blue" router>
                         <el-submenu v-for="item in menus" :index="item.index">
                             <template slot="title">
                                 <i :class="item.icon"></i>
                                 <span>{{item.name}}</span>
                             </template>
-                            <el-menu-item v-for="items in item.menus" :index="items.index" :key="items.index">{{items.name}}
+                            <el-menu-item v-for="items in item.menus" :index="items.index" :route="items.route" :key="items.index">{{items.name}}
                             </el-menu-item>
                         </el-submenu>
                         <!-- <el-submenu index="1">
@@ -63,7 +63,6 @@
                 </el-aside>
                 <el-main>
                     <router-view></router-view>
-                    
                 </el-main>
             </el-container>
         </div>
