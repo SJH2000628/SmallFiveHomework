@@ -1,5 +1,5 @@
-Vue.component('jc-product-search-page', {
-    template:`
+const ProductSearchRoutePage = {
+    template: `
     <div id="app">
     <el-input v-model="productCode" placeholder="请输入商品代号"></el-input>
     <el-input v-model="ProductName" placeholder="请输入商品名称"></el-input>
@@ -48,9 +48,9 @@ Vue.component('jc-product-search-page', {
         </el-pagination>
 </div>
     `,
-    
+
     data() {
-        return{
+        return {
             pageInfo: '',
             pageNum: 1,
             productCode: '',
@@ -64,7 +64,7 @@ Vue.component('jc-product-search-page', {
                 { value: 2, label: '待审核' }
             ]
         }
-        
+
     },
     mounted() {
         console.log('view mounted');
@@ -80,8 +80,8 @@ Vue.component('jc-product-search-page', {
             console.log('product edit click', index, row)
             console.log('producrid', row.productId)
             app.jcProductId = row.productId;
-            
-            app.selectMainPage='1-6';
+
+            app.selectMainPage = '1-6';
         },
         handleClearClick() {
             console.log('clear click')
@@ -108,13 +108,13 @@ Vue.component('jc-product-search-page', {
 
                 }
             })
-                .then( (response)=> {
+                .then((response) => {
                     console.log(response);
                     this.pageInfo = response.data;
                 })
-                .catch((error) =>{
+                .catch((error) => {
                     console.log(error);
                 })
         }
     }
-})
+    }

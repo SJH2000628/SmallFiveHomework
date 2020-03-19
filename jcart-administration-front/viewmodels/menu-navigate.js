@@ -1,8 +1,9 @@
 var app = new Vue({
+    router: router,
     el: '#app',
     data: {
-        jcProductId:'',
-        selectMainPage: '',
+        // jcProductId:'',
+        // selectMainPage: '',
         menus:[
             { 
                     name: "商品管理", index: "1", icon: 'el-icon-goods',menus:[
@@ -36,7 +37,26 @@ var app = new Vue({
         // },
         handleMenuItemSelect(index,indexPath){
             console.log('menu item click',index,indexPath);
-            app.selectMainPage = index;
+            switch(index){
+                case '1-1':
+                    router.push('/product/search')
+                    break;
+                case '2-1':
+                    router.push('/customer/search')
+                    break;
+                case '3-1':
+                    router.push('/order/search')
+                    break;
+                case '3-2':
+                    router.push('/return/search')
+                    break;
+                case '4-1':
+                    router.push('/administrator/index')
+                    break;
+                default:
+                    break;
+            }
+            // app.selectMainPage = index;
         }
     }
 })
