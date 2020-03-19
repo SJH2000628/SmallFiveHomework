@@ -16,7 +16,7 @@ Vue.component('jc-product-search-page', {
         <el-table :data="pageInfo.list" style="width: 100%">
             <el-table-column label="主图">
                 <template slot-scope="scope">
-                    <el-image style="width: 100px; height: 100px" :src="scope.row.mainPicUrl" :fit="fit"></el-image>
+                    <el-image style="width: 100px; height: 100px" :src="scope.row.mainPicUrl" fit="fill"></el-image>
                 </template>
             </el-table-column>
             <el-table-column prop="productCode" label="商品代码">
