@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/elementui.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
     <title>menu-navigate</title>
 </head>
 
@@ -13,59 +14,64 @@
 <div id="app">
 
     <el-container>
-        <el-header>JCart电商后台管理系统</el-header>
-        <el-container>
-            <el-aside width="200px">
-                <!-- @open="handleOpen"
-                @close="handleClose" -->
-                <el-menu background-color="lavender" text-color="green" active-text-color="blue" @select="handleMenuItemSelect">
-                <el-submenu v-for="item in menus" :index="item.index">
-                    <template slot="title">
-                        <i :class="item.icon"></i>
-                        <span>{{item.name}}</span>
-                    </template>
-                    <el-menu-item v-for="items in item.menus" :index="items.index" :key="items.index">{{items.name}}</el-menu-item>
-                </el-submenu>
-                <!-- <el-submenu index="1">
-                    <template slot="title">
-                        <i class="el-icon-goods"></i>
-                        <span>商品管理</span>
-                    </template>
-                    <el-menu-item index="1-1">商品列表</el-menu-item>
-                </el-submenu>
-                <el-submenu index="2">
-                    <template slot="title">
-                        <i class="el-icon-s-custom"></i>
-                        <span>客户管理</span>
-                    </template>
-                    <el-menu-item index="2-1">客户列表</el-menu-item>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title">
-                        <i class="el-icon-s-order"></i>
-                        <span>销售管理</span>
-                    </template>
-                    <el-menu-item index="3-1">订单列表</el-menu-item>
-                    <el-menu-item index="3-2">退货列表</el-menu-item>
-                </el-submenu>
-                <el-submenu index="4">
-                    <template slot="title">
-                        <i class="el-icon-user"></i>
-                        <span>用户管理</span>
-                    </template>
-                    <el-menu-item index="4-1">用户列表</el-menu-item>
-                </el-submenu> -->
-            </el-menu>
-        </el-aside>
-            <el-main>
-                <jc-administrator-index-page v-if="selectMainPage == '4-1'"></jc-administrator-index-page>
-                <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
-                <jc-customer-search-page v-if="selectMainPage == '2-1'"></jc-customer-search-page>
-                <jc-order-search-page v-if="selectMainPage == '3-1'"></jc-order-search-page>
-                <jc-return-search-page v-if="selectMainPage == '3-2'"></jc-order-search-page>
-               
-            </el-main>
-        </el-container>
+        <el-header class="jc-header">JCart电商后台管理系统</el-header>
+        <div class="jc-container">
+            <el-container>
+                <el-aside width="200px">
+                    <!-- @open="handleOpen"
+                            @close="handleClose" -->
+                    <el-menu unique-opened background-color="lavender" text-color="green" active-text-color="blue"
+                        @select="handleMenuItemSelect">
+                        <el-submenu v-for="item in menus" :index="item.index">
+                            <template slot="title">
+                                <i :class="item.icon"></i>
+                                <span>{{item.name}}</span>
+                            </template>
+                            <el-menu-item v-for="items in item.menus" :index="items.index" :key="items.index">{{items.name}}
+                            </el-menu-item>
+                        </el-submenu>
+                        <!-- <el-submenu index="1">
+                                <template slot="title">
+                                    <i class="el-icon-goods"></i>
+                                    <span>商品管理</span>
+                                </template>
+                                <el-menu-item index="1-1">商品列表</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="2">
+                                <template slot="title">
+                                    <i class="el-icon-s-custom"></i>
+                                    <span>客户管理</span>
+                                </template>
+                                <el-menu-item index="2-1">客户列表</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="3">
+                                <template slot="title">
+                                    <i class="el-icon-s-order"></i>
+                                    <span>销售管理</span>
+                                </template>
+                                <el-menu-item index="3-1">订单列表</el-menu-item>
+                                <el-menu-item index="3-2">退货列表</el-menu-item>
+                            </el-submenu>
+                            <el-submenu index="4">
+                                <template slot="title">
+                                    <i class="el-icon-user"></i>
+                                    <span>用户管理</span>
+                                </template>
+                                <el-menu-item index="4-1">用户列表</el-menu-item>
+                            </el-submenu> -->
+                    </el-menu>
+                </el-aside>
+                <el-main>
+                    <jc-administrator-index-page v-if="selectMainPage == '4-1'"></jc-administrator-index-page>
+                    <jc-product-search-page v-if="selectMainPage == '1-1'"></jc-product-search-page>
+                    <jc-customer-search-page v-if="selectMainPage == '2-1'"></jc-customer-search-page>
+                    <jc-order-search-page v-if="selectMainPage == '3-1'"></jc-order-search-page>
+                    <jc-return-search-page v-if="selectMainPage == '3-2'">
+                        </jc-order-search-page>
+            
+                </el-main>
+            </el-container>
+        </div>
     </el-container>
    
 </div>
@@ -74,11 +80,13 @@
 <script src="assets/js/common.js"></script>
 <script src="assets/js/vue.js"></script>
 <script src="assets/js/elementui.js"></script>
+
 <script src="page/administrator-index-page.js"></script>
 <script src="page/product-search-page.js"></script>
 <script src="page/customer-search-page.js"></script>
 <script src="page/order-search-page.js"></script>
 <script src="page/return-search-page.js"></script>
+
 <script src="viewmodels/menu-navigate.js"></script>
 
 </body>
