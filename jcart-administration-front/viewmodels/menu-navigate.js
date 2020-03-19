@@ -1,11 +1,12 @@
 var app = new Vue({
     el: '#app',
     data: {
+        jcProductId:'',
         selectMainPage: '',
         menus:[
             { 
                     name: "商品管理", index: "1", icon: 'el-icon-goods',menus:[
-                    { name: "商品列表", index: "1-1"}
+                    { name: "商品列表", index: "1-1"},
                 ] 
             },
             {
