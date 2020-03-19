@@ -18,9 +18,6 @@
         <div class="jc-container">
             <el-container>
                 <el-aside width="200px">
-                    <!-- @open="handleOpen"
-                            @close="handleClose" 
-                         @select="handleMenuItemSelect"-->
                     <el-menu unique-opened background-color="lavender" text-color="green" active-text-color="blue" router>
                         <el-submenu v-for="item in menus" :index="item.index">
                             <template slot="title">
@@ -30,35 +27,6 @@
                             <el-menu-item v-for="items in item.menus" :index="items.index" :route="items.route" :key="items.index">{{items.name}}
                             </el-menu-item>
                         </el-submenu>
-                        <!-- <el-submenu index="1">
-                                <template slot="title">
-                                    <i class="el-icon-goods"></i>
-                                    <span>商品管理</span>
-                                </template>
-                                <el-menu-item index="1-1">商品列表</el-menu-item>
-                            </el-submenu>
-                            <el-submenu index="2">
-                                <template slot="title">
-                                    <i class="el-icon-s-custom"></i>
-                                    <span>客户管理</span>
-                                </template>
-                                <el-menu-item index="2-1">客户列表</el-menu-item>
-                            </el-submenu>
-                            <el-submenu index="3">
-                                <template slot="title">
-                                    <i class="el-icon-s-order"></i>
-                                    <span>销售管理</span>
-                                </template>
-                                <el-menu-item index="3-1">订单列表</el-menu-item>
-                                <el-menu-item index="3-2">退货列表</el-menu-item>
-                            </el-submenu>
-                            <el-submenu index="4">
-                                <template slot="title">
-                                    <i class="el-icon-user"></i>
-                                    <span>用户管理</span>
-                                </template>
-                                <el-menu-item index="4-1">用户列表</el-menu-item>
-                            </el-submenu> -->
                     </el-menu>
                 </el-aside>
                 <el-main>
@@ -76,11 +44,17 @@
 <script src="assets/js/vue.js"></script>
 <script src="assets/js/elementui.js"></script>
 <script src="assets/js/vue-router.js"></script>
+
 <script src="route-page/product-search-route-page.js"></script>
+
 <script src="route-page/customer-search-route-page.js"></script>
+
 <script src="route-page/order-search-route-page.js"></script>
+
 <script src="route-page/return-search-route-page.js"></script>
+
 <script src="route-page/administrator-index-route-page.js"></script>
+
 <script src="route-page/router.js"></script>
 
 <script src="viewmodels/menu-navigate.js"></script>
