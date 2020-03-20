@@ -78,11 +78,7 @@ const ProductSearchRoutePage = {
             this.searchProduct();
         },
         handleEdit(index, row) {
-            console.log('product edit click', index, row)
-            console.log('producrid', row.productId)
-            app.jcProductId = row.productId;
-
-            app.selectMainPage = '1-6';
+            this.$router.push('/product/update/' + row.productId);
         },
         handleClearClick() {
             console.log('clear click')
