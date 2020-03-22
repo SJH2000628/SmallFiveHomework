@@ -20,6 +20,5 @@ class AdministratorControllerTest {
         administratorLoginInDTO.setPassword("123456");
         AdministratorLoginOutDTO logins = administratorController.login(administratorLoginInDTO);
         assertNotNull(logins);
-        assertEquals(administratorLoginInDTO,logins);
     }
 }
