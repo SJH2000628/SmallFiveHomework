@@ -7,9 +7,12 @@ import io.sjh.jcartstoreback.dto.out.PageOutDTO;
 import io.sjh.jcartstoreback.dto.out.ProductListOutDTO;
 import io.sjh.jcartstoreback.dto.out.ProductShowOutDTO;
 import io.sjh.jcartstoreback.mq.HotProductDTO;
+import io.sjh.jcartstoreback.po.ProductOperation;
 import io.sjh.jcartstoreback.service.ProductOperationService;
 import io.sjh.jcartstoreback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +31,9 @@ public class ProductController {
 
     @Autowired
     private KafkaTemplate  kafkaTemplate;
+
+    @Autowired
+    private RedisTemplate<String,String> redisTemplate;
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
@@ -54,8 +60,20 @@ public class ProductController {
     }
 
     @GetMapping("/hot")
-    public List<ProductListOutDTO> hot(){
-        return null;
+//    @Cacheable(cacheNames = "HotProducts")
+    public List<ProductOperation> hot(){
+        String hotProductsJson = redisTemplate.opsForValue().get("HotProducts");
+        if(hotProductsJson != null){
+            List<ProductOperation> productOperations = JSON.parseArray(hotProductsJson, ProductOperation.class);
+
+            return productOperations;
+        }else {
+            List<ProductOperation> hotOperations = productOperationService.selectHotProduct();
+            redisTemplate.opsForValue().set("HotProducts", JSON.toJSONString(hotOperations));
+            return hotOperations;
+        }
+
+
     }
 
 }

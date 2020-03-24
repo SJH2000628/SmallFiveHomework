@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ProductOperationServiceImpl implements ProductOperationService {
@@ -29,5 +30,11 @@ public class ProductOperationServiceImpl implements ProductOperationService {
             productOperationMapper.updateByPrimaryKeySelective(productOperation);
         }
 
+    }
+
+    @Override
+    public List<ProductOperation> selectHotProduct() {
+        List<ProductOperation> hotOperations = productOperationMapper.selectHotProduct();
+        return hotOperations;
     }
 }
