@@ -16,7 +16,7 @@
         <el-image style="width: 100px; height: 100px" :src="mainPicUrl" :fit="fill"></el-image><br>
         <br>
         其他图片:<br>
-        <el-image v-for="item in otherPicUrls" style="width: 60px; height: 60px" :src="item" fit="fill" :preview-src-list="otherPicUrls"></el-image>
+        <el-image v-for="item in otherPicUrls" style="width: 60px; height: 60px" :src="item" :fit="fill" :preview-src-list="otherPicUrls"></el-image>
         <br>
         
         <el-input v-model="productName" placeholder="请输入名称" readonly></el-input>
